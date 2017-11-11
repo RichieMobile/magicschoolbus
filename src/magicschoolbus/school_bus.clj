@@ -4,4 +4,6 @@
 (defn move
   "Moves file at `src` to `dest`"
   [src dest]
-  (io/copy (io/file src) (io/file dest)))
+  (let [src-file (io/file src) dest-file (io/file dest)]
+    (io/copy src-file dest-file)
+    (io/delete-file src-file)))
