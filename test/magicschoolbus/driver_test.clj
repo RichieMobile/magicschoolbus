@@ -22,7 +22,6 @@
   (delete orig-path-two)
   (delete fake-path))
 
-
 (defn setup [f]
   (write-file)
   (f)
@@ -32,7 +31,7 @@
 
 (deftest driver-regex-matches-file-name
   (testing "Driver file name with matching regex returns true"
-  (is (true? (driver/match? #"or.*" "orig.txt")))))
+    (is (true? (driver/match? #"or.*" "orig.txt")))))
 
 (deftest driver-reads-all-matching-files-from-directory
   (testing "Driver gets all the file names from a given directory"
