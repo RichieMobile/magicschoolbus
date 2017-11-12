@@ -11,7 +11,7 @@
   (file-seq (io/file directory)))
 
 (defn file-name-matches? [regex filename]
-  (match? regex (.getFileName filename)))
+  (match? regex (.getName (io/file filename))))
 
 (defn pickup
   "Read all files in `directory` that matches `regex`.
