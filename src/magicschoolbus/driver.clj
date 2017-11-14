@@ -19,8 +19,9 @@
 
 (defn pickup
   "Read all files in `directory` that matches `regex`.
-  `directory` and `regex` are of type `string`"
+  `directory` is `clojure.string` and `regex` is `clojure.regex`"
   [directory regex]
+  (println (str "Picking up files in " directory " with pattern " regex))
   (->> directory
        read-files
        (filter #(.isFile %))
@@ -33,4 +34,14 @@
 (defn dropoff
   "Dropping off `files` at `destination`."
   [destination files]
-  (doseq [file files] bus/move file (str destination (getName file))))
+  (doseq [file files]
+    (bus/move file (str destination "/" (getName file)))))
+
+(defn pickup-and-dropoff
+  "Picks up files in `src-dir` matching `regex` and drops them off in `dest-dir`.
+  `src-dir` and `dest-dir` are of type `clojure.string` and `regex` of type
+  `clojure.regex`"
+  [regex src-dir dest-dir]
+  (->> regex
+       (pickup src-dir)
+       (dropoff dest-dir)))

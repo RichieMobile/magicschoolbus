@@ -44,7 +44,15 @@
 (deftest driver-drops-off-files-test
   (testing "Driver moves/deletes files after pickup"
     (driver/dropoff copy-dir [orig-path orig-path-two])
-    (is (io/as-file (str copy-dir "/orig.txt")))
-    (is (io/as-file (str copy-dir "/orig2.txt")))
-    (is (false? (.exists (io/file (str copy-dir "/orig.txt")))))
-    (is (false? (.exists (io/file (str copy-dir "/orig2.txt")))))))
+    (is (true? (.exists (io/file (str copy-dir "/orig.txt")))))
+    (is (true? (.exists (io/file (str copy-dir "/orig2.txt")))))
+    (is (false? (.exists (io/file (str orig-dir "/orig.txt")))))
+    (is (false? (.exists (io/file (str orig-dir "/orig2.txt")))))))
+
+(deftest driver-picks-up-and-drops-off-files-test
+  (testing "Driver drops off files it picks up"
+    (driver/pickup-and-dropoff #"or.*" orig-dir copy-dir)
+    (is (true? (.exists (io/file (str copy-dir "/orig.txt")))))
+    (is (true? (.exists (io/file (str copy-dir "/orig2.txt")))))
+    (is (false? (.exists (io/file (str orig-dir "/orig.txt")))))
+    (is (false? (.exists (io/file (str orig-dir "/orig2.txt")))))))

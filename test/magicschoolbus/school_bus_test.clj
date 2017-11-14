@@ -24,5 +24,5 @@
 (deftest school-bus-test
   (testing "School bus moves files from one stop to another"
     (bus/move orig-path copy-path)
-    (is (io/as-file copy-path))
+    (is (true? (.exists (io/file copy-path))))
     (is (false? (.exists (io/as-file orig-path))))))

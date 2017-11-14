@@ -10,3 +10,5 @@ pom.xml.asc
 /.nrepl-port
 .hgignore
 .hg/
+test/magicschoolbus/workspace/copy
+test/magicschoolbus/workspace/orig
