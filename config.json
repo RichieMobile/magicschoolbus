@@ -1,0 +1,9 @@
+{
+  "stops": [
+    {
+      "pattern": "fu.*",
+      "source": "/Users/ricky/Projects/Test/Orig",
+      "destination": "/Users/ricky/Projects/Test/Copy"
+    }
+  ]
+}
