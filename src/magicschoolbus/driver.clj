@@ -2,6 +2,7 @@
   (:import java.io.File)
   (:require [clojure.java.io :as io]
             [clojure.string :as str]
+            [clojure.tools.logging :as log]
             [magicschoolbus.school-bus :as bus]))
 
 (defn match?
@@ -21,7 +22,7 @@
   "Read all files in `directory` that matches `regex`.
   `directory` is `clojure.string` and `regex` is `clojure.regex`"
   [directory regex]
-  (println (str "Picking up files in " directory " with pattern " regex))
+  (log/debug (str "Picking up files in " directory " with pattern " regex))
   (->> directory
        read-files
        (filter #(.isFile %))
@@ -42,6 +43,9 @@
   `src-dir` and `dest-dir` are of type `clojure.string` and `regex` of type
   `clojure.regex`"
   [regex src-dir dest-dir]
+  (log/info "Picking up files in: " src-dir
+            " with pattern: " regex
+            " Dropping off files in: " dest-dir)
   (->> regex
        (pickup src-dir)
        (dropoff dest-dir)))

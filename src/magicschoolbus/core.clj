@@ -1,7 +1,8 @@
 (ns magicschoolbus.core
   (:require [magicschoolbus.scheduler :as scheduler]
             [magicschoolbus.driver :as driver]
-            [magicschoolbus.config-parser :as parser])
+            [magicschoolbus.config-parser :as parser]
+            [clojure.tools.logging :as log])
   (:gen-class))
 
 (defn getStops [config]
@@ -18,7 +19,7 @@
 (defn -main
   "I don't do a whole lot ... yet."
   [& args]
-  (println "Take chances, make mistakes, and get messy!")
+  (log/info "Take chances, make mistakes, and get messy!")
   (->> "config.json"
        (getStops)
        (scheduleStops)))

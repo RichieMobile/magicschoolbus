@@ -1,4 +1,5 @@
-(ns magicschoolbus.scheduler)
+(ns magicschoolbus.scheduler
+  (:require [clojure.tools.logging :as log]))
 
 (def started (atom false))
 
@@ -6,7 +7,10 @@
   (future (while (true? @started) (do (Thread/sleep ms) (apply f args)))))
 
 (defn schedule [ms f & args]
+  (log/info "Scheduling task with interval: " ms)
   (reset! started true)
   (set-interval ms f args))
 
-(defn stop [] (reset! started false))
+(defn stop []
+  (log/info "Stopping scheduler.")
+  (reset! started false))
