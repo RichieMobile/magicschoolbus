@@ -9,11 +9,11 @@
 
 (defn scheduleStops [stops]
   (doseq [stop stops]
-    (scheduler/set-interval 1000
-                            driver/pickup-and-dropoff
-                            (re-pattern (get stop "pattern"))
-                            (get stop "source")
-                            (get stop "destination"))))
+    (scheduler/schedule 1000
+                        driver/pickup-and-dropoff
+                        (re-pattern (get stop "pattern"))
+                        (get stop "source")
+                        (get stop "destination"))))
 
 (defn -main
   "I don't do a whole lot ... yet."
