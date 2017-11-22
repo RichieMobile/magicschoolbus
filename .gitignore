@@ -12,3 +12,4 @@ pom.xml.asc
 .hg/
 test/magicschoolbus/workspace/copy
 test/magicschoolbus/workspace/orig
+*.iml
