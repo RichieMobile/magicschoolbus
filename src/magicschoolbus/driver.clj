@@ -46,7 +46,6 @@
   (log/info (str "Picking up files in: " src-dir
             " with pattern: " regex
             " Dropping off files in: " dest-dir))
-  (println "Picking it up!")
   (->> regex
        (pickup src-dir)
        (dropoff dest-dir)))

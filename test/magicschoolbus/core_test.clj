@@ -1,14 +1,15 @@
 (ns magicschoolbus.core-test
   (:require [clojure.test :refer :all]
+            [clojure.java.io :as io]
             [magicschoolbus.core :refer :all]
-            [clojure.java.io :as io]))
+            [magicschoolbus.scheduler :as scheduler]))
 
-(def fun_orig-dir "/Users/ricky/Projects/Test/Orig")
+(def fun_orig-dir "test/magicschoolbus/workspace/orig")
 (def fun_orig-path (str fun_orig-dir "/fun_orig.txt"))
 (def fun_orig-path-two (str fun_orig-dir "/fun_orig2.txt"))
 (def fake-path (str fun_orig-dir "/fake.txt"))
 
-(def copy-dir "/Users/ricky/Projects/Test/Copy")
+(def copy-dir "test/magicschoolbus/workspace/copy")
 
 (defn write-file []
   (spit fun_orig-path "hello")
@@ -43,9 +44,11 @@
 
 (deftest main-starts-up-the-bus
   (testing "Main method loads config and starts picking up files"
-    (let [config (str (System/getProperty "user.dir") "/config.json")]
+    (let [config "test/magicschoolbus/workspace/config.json"]
       (schedule-stops-with-config config))
     (Thread/sleep 2000)
+    (scheduler/stop)
+    (Thread/sleep 500)
     (is (true? (.exists (io/file (str copy-dir "/fun_orig.txt")))))
     (is (true? (.exists (io/file (str copy-dir "/fun_orig2.txt")))))
     (is (false? (.exists (io/file (str fun_orig-dir "/fun_orig.txt")))))

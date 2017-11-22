@@ -1,0 +1,9 @@
+{
+  "stops": [
+    {
+      "pattern": "fu.*",
+      "source": "test/magicschoolbus/workspace/orig",
+      "destination": "test/magicschoolbus/workspace/copy"
+    }
+  ]
+}
