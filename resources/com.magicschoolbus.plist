@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+        <key>label</key>
+        <string>com.magicschoolbus.activator</string>
+
+        <key>ProgramArguments</key>
+        <array>
+                <string>/usr/local/bin/magicschoolbus</string>
+        </array>
+
+        <key>OnDemand</key>
+        <false/>
+
+        <key>StandardErrorPath</key>
+        <string>/dev/null</string>
+
+        <key>StandardOutPath</key>
+        <string>/dev/null</string>
+</dict>
+</plist>
