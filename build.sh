@@ -1,7 +1,7 @@
 lein uberjar
 
 mkdir ./target/uberjar/magicschoolbus
-mkdir ./target/uberjar/magicschoolbus/logs
+mkdir ./target/uberjar/magicschoolbus/log
 
 cp ./target/uberjar/magicschoo*stand* ./target/uberjar/magicschoolbus
 cp ./config.json ./target/uberjar/magicschoolbus

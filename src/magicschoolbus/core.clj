@@ -26,5 +26,5 @@
   "I don't do a whole lot ... yet."
   [& args]
   (log/info "Take chances, make mistakes, and get messy!")
-  (schedule-stops-with-config "config"))
+  (schedule-stops-with-config "config.json"))
 

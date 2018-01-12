@@ -1,0 +1,6 @@
+#!/bin/bash
+
+homeDir=$(dirname "$(pwd)")
+logDir=$home/log
+
+java -jar $homeDir/magic*

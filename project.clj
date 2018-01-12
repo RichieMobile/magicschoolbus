@@ -1,4 +1,4 @@
-(defproject magicschoolbus "0.0.01-alpha"
+(defproject magicschoolbus "1.0.0"
   :description "FIXME: write description"
   :url "http://example.com/FIXME"
   :license {:name "Eclipse Public License"
